@@ -10,7 +10,9 @@
 
 - 1.4 算法分析
 
-- 1.5 案例研究：union-find 算法
+- [1.5 案例研究：union-find 算法](/note/chapter01/union-find.md)
+
+  [code](/algorithms/src/main/java/com/homurax/algorithms/chapter01)、[test](/algorithms/src/test/java/com/homurax/algorithms/chapter01)
 
 
 
