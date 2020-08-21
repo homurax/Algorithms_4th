@@ -125,7 +125,7 @@ public class QuickFindUF {
 
 quick-find 的轨迹:
 
-![](/images/01.png)
+![](images/01.png)
 
 ### 分析
 
@@ -143,7 +143,7 @@ quick-find 的轨迹:
 
 `union()` 中只需要修改一次「链接」即可。
 
-![](\images\02.png)
+![](images/02.png)
 
 ```java
 public class QuickUnionUF {
@@ -187,7 +187,7 @@ public class QuickUnionUF {
 
 quick-union 的轨迹：
 
-![](\images\03.png)
+![](images/03.png)
 
 ### 分析
 
@@ -257,7 +257,7 @@ public class WeightedQuickUnionUF {
 
 加权 quick-union 的轨迹:
 
-![](\images\04.png)
+![](images/04.png)
 
 ### 分析
 
