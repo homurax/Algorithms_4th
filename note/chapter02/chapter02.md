@@ -21,32 +21,19 @@
 这种方法叫做选择排序，因为它在不断地选择剩余元素之中的最小者。
 
 ```java
-public class Selection {
-    
-    public static <T extends Comparable<T>> void sort(T[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[i])) {
-                    minIndex = j;
-                }
-            }
-            swap(a, i, minIndex);
-        }
-    }
+public class SortUtil {
 
-    private static <T extends Comparable<T>> boolean less(T t1, T t2) {
+    protected static <T extends Comparable<T>> boolean less(T t1, T t2) {
         return t1.compareTo(t2) < 0;
     }
 
-    private static <T extends Comparable<T>> void swap(T[] a, int i, int j) {
+    protected static <T extends Comparable<T>> void swap(T[] a, int i, int j) {
         T t = a[i];
         a[i] = a[j];
         a[j] = t;
     }
 
-    private static <T extends Comparable<T>> void show(T[] a) {
+    protected static <T extends Comparable<T>> void show(T[] a) {
         System.out.println(Arrays.toString(a));
     }
 
@@ -58,6 +45,28 @@ public class Selection {
         }
         return true;
     }
+
+}
+```
+
+
+
+```java
+public class Selection {
+
+    public static <T extends Comparable<T>> void sort(T[] a) {
+        int N = a.length;
+        for (int i = 0; i < N; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < N; j++) {
+                if (SortUtil.less(a[j], a[minIndex])) {
+                    minIndex = j;
+                }
+            }
+            SortUtil.swap(a, i, minIndex);
+        }
+    }
+
 }
 ```
 
@@ -78,6 +87,43 @@ public class Selection {
 - **数据移动是最少的**
 
   每次交换都会改变两个数组元素的值，因此选择排序用了 N 次交换，交换次数和数组的大小是线性关系。
+
+
+
+### 插入排序
+
+构建有序序列，对于未排序数据，在已排序序列中扫描，找到相应位置并插入。为了给要插入的元素腾出空间，需要将其余所有元素在插入之前都向右移动一位。当前索引左边的所有元素都是有序的，当索引到达数组的右端时，数组排序就完成了。
+
+```java
+public class Insertion {
+
+    public static <T extends Comparable<T>> void sort(T[] a) {
+        int N = a.length;
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0 && SortUtil.less(a[j], a[j - 1]); j--) {
+                SortUtil.swap(a, j, j-1);
+            }
+        }
+    }
+
+}
+```
+
+插入排序所需的时间取决于输入中元素的初始顺序。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
