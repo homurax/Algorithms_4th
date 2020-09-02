@@ -18,7 +18,7 @@ public class ElementarySortsTests {
     private String[] data;
 
     @BeforeEach
-    void beforeAll() {
+    void beforeEach() {
         Path file = Paths.get("data\\chapter02\\tiny.txt");
         try (InputStream in = Files.newInputStream(file);
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
@@ -43,6 +43,15 @@ public class ElementarySortsTests {
     void insertionTest() {
         SortUtil.show(data);
         Insertion.sort(data);
+        assertTrue(SortUtil.isSorted(data));
+        SortUtil.show(data);
+    }
+
+    @Test
+    @DisplayName("Shell")
+    void shellTest() {
+        SortUtil.show(data);
+        Shell.sort(data);
         assertTrue(SortUtil.isSorted(data));
         SortUtil.show(data);
     }
