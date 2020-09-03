@@ -56,4 +56,13 @@ public class ElementarySortsTests {
         SortUtil.show(data);
     }
 
+    @Test
+    @DisplayName("Merge")
+    void mergeTest() {
+        SortUtil.show(data);
+        Merge.sort(data);
+        assertTrue(SortUtil.isSorted(data));
+        SortUtil.show(data);
+    }
+
 }

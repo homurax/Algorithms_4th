@@ -23,17 +23,17 @@
 ```java
 public class SortUtil {
 
-    protected static <T extends Comparable<T>> boolean less(T t1, T t2) {
+    public static <T extends Comparable<T>> boolean less(T t1, T t2) {
         return t1.compareTo(t2) < 0;
     }
 
-    protected static <T extends Comparable<T>> void swap(T[] a, int i, int j) {
+    public static <T extends Comparable<T>> void swap(T[] a, int i, int j) {
         T t = a[i];
         a[i] = a[j];
         a[j] = t;
     }
 
-    protected static <T extends Comparable<T>> void show(T[] a) {
+    public static <T extends Comparable<T>> void show(T[] a) {
         System.out.println(Arrays.toString(a));
     }
 
@@ -66,9 +66,9 @@ public static <T extends Comparable<T>> void sort(T[] a) {
 }
 ```
 
-选择排序的内循环只是在比较当前元素与目前已知的最小元素。交换元素的代码写在内循环之外，每次交换都能排定一个元素，因此交换的总次数是 N。所以算法的时间效率取决于比较的次数。
+对于长度为 N 的数组，选择排序需要大约 `N^2/2` 次比较和 `N` 次交换。
 
-**对于长度为 N 的数组，选择排序需要大约 `N^2/2` 次比较和 `N` 次交换。**
+选择排序的内循环只是在比较当前元素与目前已知的最小元素。交换元素的代码写在内循环之外，每次交换都能排定一个元素，因此交换的总次数是 N。所以算法的时间效率取决于比较的次数。
 
 - **运行时间和输入无关**
 
@@ -97,9 +97,9 @@ public static <T extends Comparable<T>> void sort(T[] a) {
 }
 ```
 
-**插入排序所需的时间取决于输入中元素的初始顺序。**
+对于随机排列的长度为 N 且主键不重复的数组，平均情况下插入排序需要 `～ N^2/4` 次比较以及 `～ N^2/4` 次交换。最坏情况下需要 `～ N^2/2` 次比较和 `～ N^2/2` 次交换，最好情况下需要 `N-1` 次比较和 0 次交换。
 
-**对于随机排列的长度为 N 且主键不重复的数组，平均情况下插入排序需要 `～ N^2/4` 次比较以及 `～ N^2/4` 次交换。最坏情况下需要 `～ N^2/2` 次比较和 `～ N^2/2` 次交换，最好情况下需要 `N-1` 次比较和 0 次交换。**
+**插入排序所需的时间取决于输入中元素的初始顺序。**
 
 倒置指的是数组中的两个顺序颠倒的元素。如果数组中倒置的数量小于数组大小的某个倍数，那么可以说这个数组是部分有序的。
 
@@ -153,3 +153,69 @@ public static <T extends Comparable<T>> void sort(T[] a) {
 [更多的序列选择](https://en.wikipedia.org/wiki/Shellsort#Gap_sequences)
 
 与选择排序以及插入排序相比，希尔排序也可以用于大型数组。
+
+
+
+## 归并排序
+
+要将一个数组排序，可以先递归地将它分成两半并分别排序，然后将结果归并起来。即将两个有序的数组归并成一个更大的有序数组。
+
+
+
+### 归并
+
+将所有元素复制到一个辅助数组中，再把归并的结果放回原数组中。
+
+```java
+public static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
+    int i = lo, j = mid + 1;
+    System.arraycopy(a, lo, aux, lo, hi - lo + 1);
+    for (int k = lo; k <= hi; k++) {
+        if (i > mid) a[k] = aux[j++]; // 左边用尽 取右边
+        else if (j > hi) a[k] = aux[i++]; // 右边用尽 取左边
+        else if (SortUtil.less(aux[j], aux[i])) a[k] = aux[j++]; // 取更小的一边
+        else a[k] = aux[i++];
+    }
+}
+```
+
+
+
+### 自顶向下的归并排序
+
+```java
+public class Merge {
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Comparable<T>> void sort(T[] a) {
+        T[] aux = (T[]) new Comparable[a.length];
+        sort(a, aux, 0, a.length - 1);
+    }
+
+    private static <T extends Comparable<T>> void sort(T[] a, T[] aux, int lo, int hi) {
+        if (hi <= lo) return;
+
+        int mid = lo + ((hi - lo) >> 1);
+        sort(a, aux, lo, mid);
+        sort(a, aux, mid + 1, hi);
+        merge(a, aux, lo, mid, hi);
+    }
+
+    public static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
+        int i = lo, j = mid + 1;
+        System.arraycopy(a, lo, aux, lo, hi - lo + 1);
+        for (int k = lo; k <= hi; k++) {
+            if (i > mid) a[k] = aux[j++]; // 左边用尽 取右边
+            else if (j > hi) a[k] = aux[i++]; // 右边用尽 取左边
+            else if (SortUtil.less(aux[j], aux[i])) a[k] = aux[j++]; // 取更小的一边
+            else a[k] = aux[i++];
+        }
+    }
+
+}
+```
+
+对于长度为 N 的任意数组，自顶向下的归并排序需要 `½NlgN` 至 `NlgN` 次比较。自顶向下的归并排序最多需要访问数组 `6NlgN` 次（`2N` 次用来复制，`2N` 次用来将排好序的元素移动回去， 另外最多比较 `2N` 次）。
+
+**归并排序所需的时间和 `NlgN` 成正比，主要缺点是辅助数组所使用的额外空间和 N 的大小成正比。**
+
