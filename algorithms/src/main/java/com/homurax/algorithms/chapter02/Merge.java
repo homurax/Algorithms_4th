@@ -17,7 +17,9 @@ public class Merge {
         int mid = lo + ((hi - lo) >> 1);
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
-        merge(a, aux, lo, mid, hi);
+        if (SortUtil.less(a[mid + 1], a[mid])) {
+            merge(a, aux, lo, mid, hi);
+        }
     }
 
     public static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
