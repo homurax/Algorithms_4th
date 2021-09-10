@@ -43,8 +43,8 @@ public class ElementarySortsTests {
     void insertionTest() {
         SortUtil.show(data);
         Insertion.sort(data);
-        assertTrue(SortUtil.isSorted(data));
         SortUtil.show(data);
+        assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
@@ -52,8 +52,8 @@ public class ElementarySortsTests {
     void shellTest() {
         SortUtil.show(data);
         Shell.sort(data);
-        assertTrue(SortUtil.isSorted(data));
         SortUtil.show(data);
+        assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
@@ -61,8 +61,17 @@ public class ElementarySortsTests {
     void mergeTest() {
         SortUtil.show(data);
         Merge.sort(data);
-        assertTrue(SortUtil.isSorted(data));
         SortUtil.show(data);
+        assertTrue(SortUtil.isSorted(data));
+    }
+
+    @Test
+    @DisplayName("MergeBU")
+    void mergeBUTest() {
+        SortUtil.show(data);
+        MergeBU.sort(data);
+        SortUtil.show(data);
+        assertTrue(SortUtil.isSorted(data));
     }
 
 }

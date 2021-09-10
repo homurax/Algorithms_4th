@@ -203,7 +203,7 @@ public class Merge {
         }
     }
 
-    public static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
+    private static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
         System.arraycopy(a, lo, aux, lo, hi - lo + 1);
         for (int k = lo; k <= hi; k++) {
@@ -220,4 +220,47 @@ public class Merge {
 对于长度为 N 的任意数组，自顶向下的归并排序需要 `½NlgN` 至 `NlgN` 次比较。自顶向下的归并排序最多需要访问数组 `6NlgN` 次（`2N` 次用来复制，`2N` 次用来将排好序的元素移动回去， 另外最多比较 `2N` 次）。
 
 **归并排序所需的时间和 `NlgN` 成正比，主要缺点是辅助数组所使用的额外空间和 N 的大小成正比。**
+
+
+
+### 自底向上的归并排序
+
+```java
+@SuppressWarnings("unchecked")
+public static <T extends Comparable<T>> void sort(T[] a) {
+    int len = a.length;
+    T[] aux = (T[]) new Comparable[a.length];
+    for (int size = 1; size < len; size *= 2) {
+        for (int idx = 0; idx < len - size; idx += size * 2) {
+            Merge.merge(a, aux, idx, idx + size - 1, Math.min(idx + size + size - 1, len - 1));
+        }
+    }
+}
+```
+
+
+
+### 排序算法的复杂度
+
+没有任何基于比较的算法能够保证使用少于 `lg(N!) ～ NlgN` 次比较将长度为 N 的数组排序。
+
+归并排序是一种渐进最优的基于比较排序的算法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
