@@ -1,5 +1,10 @@
 package com.homurax.algorithms.chapter02;
 
+import com.homurax.algorithms.chapter02.elementary.Insertion;
+import com.homurax.algorithms.chapter02.elementary.Selection;
+import com.homurax.algorithms.chapter02.elementary.Shell;
+import com.homurax.algorithms.chapter02.mege.Merge;
+import com.homurax.algorithms.chapter02.mege.MergeBU;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

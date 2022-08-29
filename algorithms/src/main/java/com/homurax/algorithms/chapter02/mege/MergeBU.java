@@ -1,4 +1,4 @@
-package com.homurax.algorithms.chapter02;
+package com.homurax.algorithms.chapter02.mege;
 
 /**
  * 自底向上的归并排序

@@ -1,4 +1,6 @@
-package com.homurax.algorithms.chapter02;
+package com.homurax.algorithms.chapter02.elementary;
+
+import com.homurax.algorithms.chapter02.SortUtil;
 
 /**
  * 插入排序
