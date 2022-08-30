@@ -12,11 +12,9 @@
 
 - [1.5 案例研究：union-find 算法](/note/chapter01/union-find.md)
 
-  [code](/algorithms/src/main/java/com/homurax/algorithms/chapter01)、[test](/algorithms/src/test/java/com/homurax/algorithms/chapter01)
+  
 
-
-
-**第 02 章 - 排序**
+[**第 02 章 - 排序**](/note/chapter02/chapter02.md)
 
 - 2.1 初级排序算法
 - 2.2 归并排序

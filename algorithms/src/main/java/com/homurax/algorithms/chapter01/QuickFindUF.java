@@ -16,10 +16,10 @@ public class QuickFindUF {
     private final int[] id; // 分量id
     private int count; // 分量数量
 
-    public QuickFindUF(int N) {
-        this.count = N;
-        this.id = new int[N];
-        for (int i = 0; i < N; i++) {
+    public QuickFindUF(int n) {
+        this.count = n;
+        this.id = new int[n];
+        for (int i = 0; i < n; i++) {
             this.id[i] = i;
         }
     }

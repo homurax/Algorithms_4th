@@ -8,10 +8,10 @@ import com.homurax.algorithms.chapter02.SortUtil;
 public class Selection {
 
     public static <T extends Comparable<T>> void sort(T[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
             int minIndex = i;
-            for (int j = i + 1; j < N; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (SortUtil.less(a[j], a[minIndex])) {
                     minIndex = j;
                 }

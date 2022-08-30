@@ -13,11 +13,11 @@ public class WeightedQuickUnionPathCompressionUF {
     private final int[] size;
     private int count;
 
-    public WeightedQuickUnionPathCompressionUF(int N) {
-        this.count = N;
-        this.id = new int[N];
-        this.size = new int[N];
-        for (int i = 0; i < N; i++) {
+    public WeightedQuickUnionPathCompressionUF(int n) {
+        this.count = n;
+        this.id = new int[n];
+        this.size = new int[n];
+        for (int i = 0; i < n; i++) {
             this.id[i] = i;
             this.size[i] = 1;
         }

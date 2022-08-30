@@ -29,6 +29,7 @@ public class ElementarySortsTests {
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             String line = reader.readLine();
             data = line.split("\\s+");
+            //SortUtil.show(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,45 +38,40 @@ public class ElementarySortsTests {
     @Test
     @DisplayName("Selection")
     void selectionTest() {
-        SortUtil.show(data);
         Selection.sort(data);
-        SortUtil.show(data);
+        //SortUtil.show(data);
         assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
     @DisplayName("Insertion")
     void insertionTest() {
-        SortUtil.show(data);
         Insertion.sort(data);
-        SortUtil.show(data);
+        //SortUtil.show(data);
         assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
     @DisplayName("Shell")
     void shellTest() {
-        SortUtil.show(data);
         Shell.sort(data);
-        SortUtil.show(data);
+        //SortUtil.show(data);
         assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
-    @DisplayName("Merge")
+    @DisplayName("Merge - 自顶向下")
     void mergeTest() {
-        SortUtil.show(data);
         Merge.sort(data);
-        SortUtil.show(data);
+        //SortUtil.show(data);
         assertTrue(SortUtil.isSorted(data));
     }
 
     @Test
-    @DisplayName("MergeBU")
+    @DisplayName("MergeBU - 自底向上的归并排序")
     void mergeBUTest() {
-        SortUtil.show(data);
         MergeBU.sort(data);
-        SortUtil.show(data);
+        //SortUtil.show(data);
         assertTrue(SortUtil.isSorted(data));
     }
 

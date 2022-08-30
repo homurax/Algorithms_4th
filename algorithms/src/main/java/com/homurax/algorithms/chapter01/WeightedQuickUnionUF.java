@@ -13,11 +13,11 @@ public class WeightedQuickUnionUF {
     private final int[] sz; // 由触点索引的各个根节点所对应的分量的大小
     private int count;
 
-    public WeightedQuickUnionUF(int N) {
-        this.count = N;
-        this.id = new int[N];
-        this.sz = new int[N];
-        for (int i = 0; i < N; i++) {
+    public WeightedQuickUnionUF(int n) {
+        this.count = n;
+        this.id = new int[n];
+        this.sz = new int[n];
+        for (int i = 0; i < n; i++) {
             this.id[i] = i;
             this.sz[i] = 1;
         }

@@ -15,10 +15,10 @@ public class QuickUnionUF {
     private final int[] id;
     private int count;
 
-    public QuickUnionUF(int N) {
-        this.count = N;
-        this.id = new int[N];
-        for (int i = 0; i < N; i++) {
+    public QuickUnionUF(int n) {
+        this.count = n;
+        this.id = new int[n];
+        for (int i = 0; i < n; i++) {
             this.id[i] = i;
         }
     }
