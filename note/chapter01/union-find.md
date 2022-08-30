@@ -123,10 +123,6 @@ public class QuickFindUF {
 }
 ```
 
-quick-find 的轨迹:
-
-![](images/01.png)
-
 ### 分析
 
 `find()` 操作的速度显然是很快的，因为它只需要访问 `id[]` 数组一次。对于每一对输入 `union()` 都可能需要扫描整个 `id[]` 数组。`union()` 操作访问数组的次数在 `N+3` 到 `2N+1` 之间。
@@ -142,8 +138,6 @@ quick-find 的轨迹:
 在实现 `find()` 方法时，从给定的触点开始，由它的链接得到另一个触点，再由这个触点的链接到达第三个触点，如此继续跟随着链接直到到达一个根触点。
 
 `union()` 中只需要修改一次「链接」即可。
-
-![](images/02.png)
 
 ```java
 public class QuickUnionUF {
@@ -184,10 +178,6 @@ public class QuickUnionUF {
     }
 }
 ```
-
-quick-union 的轨迹：
-
-![](images/03.png)
 
 ### 分析
 
@@ -254,10 +244,6 @@ public class WeightedQuickUnionUF {
     }
 }
 ```
-
-加权 quick-union 的轨迹:
-
-![](images/04.png)
 
 ### 分析
 
@@ -360,4 +346,5 @@ public class WeightedQuickUnionPathCompressionUF {
       <td colspan="2">非常非常地接近但仍没有达到 1 (均摊成本)</td>
    </tr>
 </table>
+
 
